@@ -1,0 +1,14 @@
+1. Embedding PHP in HTML
+2. Adding dynamic content
+3. Accessing form variables
+4. Understanding identifiers
+Creating user-declared variables
+Examining variable types
+Assigning values to variables
+Declaring and using constants
+Understanding variable scope
+Understanding operators and precedence
+Evaluating expressions
+Using variable functions
+Making decisions with if, else, and switch
+Taking advantage of iteration using while, do, and for loops
