@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var a = 38;
+        var b = {"nome" : "pedro",
+                "idade": 48};
+
+        var c = function (person,age) {
+            person.idade = age;
+        }
+        //debugger;
+        console.log(a,b,c);
+        c(b,a);       
+        console.log(a,b,c);
+
+    </script>
+</head>
+<body>
+
+        <ul>
+            <li> <p> pedro </p></li>
+            <li> kjshdkjhs</li>
+        </ul>
+        <p> ss s</p>
+</body>
+<script>
+    //debugger;
+    var myH1 = document.createElement("h1");
+    document.body.appendChild(myH1);
+    myH1.innerHTML="LISTA"
+    //document.body.appendChild(myH1);
+    for (let i = 0; i < 100; i++) {
+        let myP = document.createElement("p");
+        document.body.appendChild(myP);
+        myP.innerHTML = "linha : " + i;
+    }
+    LTitles = document.getElementsByTagName("title");
+    LTitles[0].innerHTML = "lili";
+
+    LPs = document.querySelectorAll("ul>li>p");
+    LPs[0].innerHTML="miguel";
+    LPs[0].parentElement.parentElement.style.backgroundColor="yellow";
+
+
+
+
+</script>
+</html>

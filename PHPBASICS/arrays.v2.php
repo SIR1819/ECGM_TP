@@ -42,6 +42,8 @@ printArray2($c);
 
 
 
+
+
 // cuidado!!! (o cão morde)
 function printArray1($array) {
     for($i = 0; $i < sizeof($array); $i++) {

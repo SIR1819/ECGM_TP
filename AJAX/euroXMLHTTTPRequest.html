@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Euromilhões</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="euromilhoes.css">
+    </head>
+    <body>
+        <div id="pagehead">
+            <h1>Euromilhões</h1>
+        </div>
+        <div id="pagecommands">
+            <button id="bgera">Gera Chave</button>
+            <button id="bobter">Obetr Chave Externa</button>
+            <button id="blimpa">Limpa Chaves</button>
+        </div>
+        <div id="pagecontent">
+            <div class="chave">
+                <ul class="numeros">
+                    <li>3</li>
+                    <li>7</li>
+                    <li>14</li>
+                    <li>23</li>
+                    <li>34</li>
+                </ul>
+                <ul class="estrelas">
+                    <li>8</li>
+                    <li>12</li>
+                </ul>
+            </div>
+        </div>
+        <div id="pagefoot">
+            &copy; &lt;Pedro Moreira&gt; nota:  O Prof. tem 50% de comissão
+        </div>
+        <script>
+            // gerador de chaves
+
+            var bgera  = document.getElementById("bgera");
+            var blimpa = document.getElementById("blimpa");
+            var bobter = document.getElementById("bobter");
+
+            blimpa.onclick = function () {
+                document.getElementById("pagecontent").innerHTML="";
+            }
+
+            bgera.addEventListener("click", geraChave);
+            bobter.addEventListener("click", obterChave);
+
+            //bgera.addEventListener("click", dizola);
+            //bgera.addEventListener("click", dizole);
+
+            //function dizola() {console.log(this.id, "> olá");}
+            //function dizole() {
+            //    console.log(this.id, "> olé");
+            //    this.removeEventListener("click", dizola);
+            //}
+            
+            function geraChave() {
+
+                var chave = {
+                    "estrelas" : [],
+                    "numeros" : []
+                };
+                console.log(chave);
+
+                chave.estrelas = extrator(1,12,2);
+                chave.numeros = extrator(1,50,5);
+
+                myDIV = document.createElement("div");
+                myDIV.className = "chave";
+
+                myULE = document.createElement("ul");
+                myULE.className = "estrelas";
+
+                myULN = document.createElement("ul");
+                myULN.className = "numeros";
+
+                myDIV.appendChild(myULE);
+                myDIV.appendChild(myULN);
+
+                array2List(myULE,chave.estrelas);
+                array2List(myULN,chave.numeros);
+
+                divContent = document.getElementById("pagecontent");
+                divContent.appendChild(myDIV);
+
+                console.log(myDIV);
+
+                function array2List(lista,chave) {
+                    for (let i = 0; i < chave.length; i++) {
+                        myLI = document.createElement("li");
+                        myLI.innerHTML = chave[i];
+                        lista.appendChild(myLI);
+                    }
+                }
+
+
+                function extrator(min,max,n) {
+                    extracao = [];
+                    while(extracao.length < n) {
+                        num = min + Math.floor(Math.random() * (max - min + 1));
+                        if (extracao.indexOf(num) < 0) {
+                            extracao.push(num);
+                        }
+                    }
+                    extracao.sort(comparaNumeros);
+                    return extracao;
+
+                    function comparaNumeros(a,b)  {return (a-b)};
+                }
+                console.log(chave);
+            }
+
+            function obterChave() {
+
+                function trataRequest () {
+                    console.log("---",this.readyState, this.status);
+                    if (this.readyState == 4 && this.status == 200) {
+                        // requerst terminou com sucesso
+                        console.log(this.responseText);
+                        chave = JSON.parse(this.responseText);
+                        console.log(chave);
+
+                        myDIV = document.createElement("div");
+                        myDIV.className = "chave";
+
+                        myULE = document.createElement("ul");
+                        myULE.className = "estrelas";
+
+                        myULN = document.createElement("ul");
+                        myULN.className = "numeros";
+
+                        myDIV.appendChild(myULE);
+                        myDIV.appendChild(myULN);
+
+                        array2List(myULE,chave.estrelas);
+                        array2List(myULN,chave.numeros);
+
+                        divContent = document.getElementById("pagecontent");
+                        divContent.appendChild(myDIV);
+
+                        console.log(myDIV);
+
+                function array2List(lista,chave) {
+                    for (let i = 0; i < chave.length; i++) {
+                        myLI = document.createElement("li");
+                        myLI.innerHTML = chave[i];
+                        lista.appendChild(myLI);
+                    }
+                }
+
+
+                    }
+                }
+
+                function loadListener () {
+                    console.log(this.responseText);
+                }
+
+                var myReq = new XMLHttpRequest();
+
+                myReq.onreadystatechange = trataRequest;
+                //myReq.addEventListener("load", loadListener);
+                myReq.open("GET", "http://localhost/SIR1819/ECGM_PL/EUROMILHOES/serveChaves.php");
+                myReq.addEventListener("onreadystatechange", trataRequest);
+                myReq.send();
+
+                
+
+
+                
+
+
+            }
+
+        </script>
+    </body>
+</html>
