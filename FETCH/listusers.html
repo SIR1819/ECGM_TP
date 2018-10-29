@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="user.css"/>
+</head>
+<body>
+    <div id="divcontrol">
+        <button id="bget">Get Users</button>
+    </div>
+    <div id="divcontent">
+
+    </div>
+</body>
+    <script>
+        var bget = document.getElementById("bget");
+
+        bget.addEventListener("click",getUsers);
+
+        function getUsers() {
+
+            // fetch API
+            fetch("https://randomuser.me/api/?results=10")
+            //fetch("badjson.js")
+            .then(function (response) {
+                return (response.json());
+            })
+            .then(function (json) {
+                console.log(json);
+                listUsers(json);
+            })
+            .catch( function (reason) {
+                console.log("---",reason);
+            });
+        }
+
+        function listUsers(json) {
+
+            json.results.forEach(element => {
+                var divuser = document.createElement("div");
+                divuser.className="divuser";
+
+                var divuserimg = document.createElement("div");
+                divuserimg.className="userimg";
+                //divuserimg.innerHTML="img";
+                var userimg = document.createElement("img");
+                userimg.src = element.picture.medium;
+                divuserimg.appendChild(userimg);
+
+                var divuserdetail = document.createElement("div");
+                divuserdetail.className="userdetail";
+                username = 
+                element.name.first + 
+                " " +
+                element.name.last; 
+                divuserdetail.innerHTML=username;
+                //divuserdetail.innerHTML="detail";
+
+
+                divuser.appendChild(divuserimg);
+                divuser.appendChild(divuserdetail);
+
+                var divcontent = document.getElementById("divcontent");
+                divcontent.appendChild(divuser);
+            });
+            
+        }
+
+
+    </script>
+
+</html>

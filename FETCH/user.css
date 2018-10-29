@@ -1,0 +1,29 @@
+.divuser {
+    background-color: black;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px; 
+}
+
+.userimg {
+    background-color: yellowgreen;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.userdetail {
+    display: flex;
+    flex-direction: column;
+    background-color: deepskyblue;
+    font-size: 32pt;
+    text-align: center;
+    width: 100%;
+}
+
+.userimg img {
+    margin: 20px;
+
+}
