@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="user.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+
+</head>
+<body>
+    <div id="divcontrol">
+        <button id="bget">Get Users</button>
+    </div>
+    <div id="divcontent">
+            <!-- template instanciado -->
+            <div class="divuser">
+                    <div class="userimg">
+                        <img src="https://randomuser.me/api/portraits/med/women/96.jpg">
+                    </div>
+                    <div class="userdetail">
+                        ömür erkekli
+                    </div>
+            </div>
+    </div>
+</body>
+    <script>
+        getUsers();
+
+        var bget = document.getElementById("bget");
+
+        bget.addEventListener("click",getUsers);
+
+        function getUsers() {
+
+            // fetch API
+            fetch("https://randomuser.me/api/?results=100")
+            //fetch("badjson.js")
+            .then(function (response) {
+                return (response.json());
+            })
+            .then(function (json) {
+                console.log(json);
+                listUsersTMPL(json);
+            })
+            .catch( function (reason) {
+                console.log("---",reason);
+            });
+        }
+
+        function listUsersTMPL(json) {
+            // identificar o template e guardar numa string
+            templateElement = document.getElementById("user");
+            templateString = templateElement.innerHTML;
+            console.log(templateString);
+            // pré "compilar" o template
+            Mustache.parse(templateString); 
+            renderedString = Mustache.render(templateString,json);
+            console.log(renderedString);
+            var divcontent = document.getElementById("divcontent");
+            divcontent.innerHTML = renderedString;
+        }
+
+        function listUsers(json) {
+
+            json.results.forEach(element => {
+                var divuser = document.createElement("div");
+                divuser.className="divuser";
+
+                var divuserimg = document.createElement("div");
+                divuserimg.className="userimg";
+                //divuserimg.innerHTML="img";
+                var userimg = document.createElement("img");
+                userimg.src = element.picture.medium;
+                divuserimg.appendChild(userimg);
+
+                var divuserdetail = document.createElement("div");
+                divuserdetail.className="userdetail";
+                username = 
+                element.name.first + 
+                " " +
+                element.name.last; 
+                divuserdetail.innerHTML=username;
+                //divuserdetail.innerHTML="detail";
+
+
+                divuser.appendChild(divuserimg);
+                divuser.appendChild(divuserdetail);
+
+                var divcontent = document.getElementById("divcontent");
+                divcontent.appendChild(divuser);
+            });
+            
+        }
+    </script>
+
+
+    <script type="x-tmpl-mustache" id="user">
+            {{#results}}
+            <div class="divuser">
+                    <div class="userimg">
+                        <img src="{{picture.medium}}">
+                    </div>
+                    <div class="userdetail">
+                        {{name.first}} {{name.last}}
+                    </div>
+            </div>
+            {{/results}}
+    </script>
+
+
+
+</html>
