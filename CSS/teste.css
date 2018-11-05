@@ -1,0 +1,27 @@
+/* selector de elemento*/
+h1 {font-size: 24px}
+p {color:red}
+
+/* selector de id*/
+#p001 {color:lightpink}
+#p001 {color:lightblue}
+
+/* selector de classe*/
+.fcp {color: blue}
+.scp {color:green}
+
+/* selector de descendência*/
+div p {color:lime}
+div .fcp {color:beige}
+
+/* selector de filhos*/
+div>p {text-decoration: underline}
+
+/* selector de adjacência*/
+.fcp+p {text-transform: uppercase}
+
+/* selector de irmãos*/
+p~h2 {background-color: darkgoldenrod}
+h2~p {background-color: yellowgreen}
+
+
