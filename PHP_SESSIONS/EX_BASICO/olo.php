@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
 } else {
-    header("location_index.php");
+    header("location:index.php");
 }
 session_write_close();
 ?>
