@@ -119,7 +119,7 @@ session_destroy();
 Este exemplo pretende ilustrar o uso de sessões para personalizar a forma como um utilizador vê um conjunto de páginas. No caso presente, o utilizador pode escolher um de três temas visuais.
 
 ### código fonte
-O código de suporte a este exemplo encontra-se disponível em [https://github.com/SIR1819/PHP-sessions/PHP-sessions1](https://github.com/SIR1819/PHP-sessions/PHP-sessions1)
+O código de suporte a este exemplo encontra-se disponível em [https://github.com/SIR1819/PHP-SESSIONS/SESSIONS/PHP-sessions1](https://github.com/SIR1819/PHP-SESSIONS/SESSIONS/PHP-sessions1)
 
 ### os ficheiros
 * `selectX.php`
@@ -325,7 +325,7 @@ Este exemplo pretende ilustrar o uso de sessões para personalizar a forma como 
 
 
 ### código fonte
-O código de suporte a este exemplo encontra-se disponível em [https://github.com/SIR1819/PHP-sessions/PHP-sessions2](https://github.com/SIR1819/PHP-sessions/PHP-sessions2)
+O código de suporte a este exemplo encontra-se disponível em [https://github.com/SIR1819/PHP-SESSIONS/SESSIONS/PHP-sessions2](https://github.com/SIR1819/PHP-SESSIONS/SESSIONS/PHP-sessions2)
 
 ### funcionamento
 O funcionamento do exemplo encontra-se ilustrado na imagem seguinte.
