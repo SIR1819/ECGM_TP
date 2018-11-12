@@ -1,0 +1,20 @@
+/**
+ * (c) pedro moreira 2010-2016
+ */
+@CHARSET "UTF-8";
+
+body {
+	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+input[type='submit'] {
+	background-color: yellow;
+	border-radius: 5px;
+}
+.copy {
+	display: inline-block;
+	background-color: #5f8494;
+	border-radius: 5px;
+	color: lightgrey;
+	padding:5px;
+}

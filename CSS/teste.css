@@ -24,4 +24,6 @@ div>p {text-decoration: underline}
 p~h2 {background-color: darkgoldenrod}
 h2~p {background-color: yellowgreen}
 
+p:first-child {text-decoration: line-through}
+
 

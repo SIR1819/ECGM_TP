@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<div>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+
+        @media print {
+            html {
+            background-color : white;
+            }
+        }
+/*
+        @media screen {
+            html {
+            background-color : bisque;
+            }
+        }
+*/
+
+        @media only screen
+            and (min-width: 320px)
+            and (max-width: 480px) {
+                html {
+                    background-color : black;
+                    font-size: 24px;
+                }
+        }
+
+        @media only screen
+            and (min-width: 480px)
+            and (max-width: 1200px) {
+                html {
+                    background-color : red;
+                    font-size:48px;
+                }
+        }
+
+
+        #content p {
+            font-size: 1em;
+        }
+
+       #content>p {
+            margin: 0px; 
+        }
+
+        p:nth-of-type(2n) {
+            background-color: navy;
+            color: lightgray;
+        }
+
+        p:nth-of-type(2n+1) {
+            background-color: lightgray;
+            color: navy;
+        }
+
+        #content>p:hover {
+            background-color: yellow;
+            color:green;
+        }
+
+        #content>p::first-letter {
+            text-transform: uppercase;
+            font-size: larger;
+        }
+
+        #lista li>a[href$=".docx"]::after {
+            content: url("images/docx.png")
+        }
+
+        #lista li>a[href$=".pdf"]::after {
+            content: url("images/pdf.gif")
+        }
+
+    </style>
+</head>
+<body>
+    <div id="content">
+        <p class="escuro"> ana </p>
+        <h1>xxx</h1>
+        <p class="claro"> pedro</p>
+        <p class="claro"> joão</p>
+        <p class="escuro"> maria</p>
+        <p class="escuro"> carlos </p>
+        <p class="claro"> teresa</p>
+        <p>paulo</p>
+        <p>paula</p>
+        <p>fátima</p>
+    </div>
+
+    <div id="lista">
+        <ul>
+            <li><a href="manual.docx">manual1</a></li>
+            <li><a href="help.pdf">help</a></li>
+            <li><a href="livro.pdf">livro</a></li>
+        </ul>
+    </div>
+</body>
+</html>
