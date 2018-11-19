@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            width : 600px;
+            border-radius: 3px;
+            border-color: cornflowerblue;
+            border-style: dashed;
+            border-width: 1px;
+        }
+        fieldset.input {
+            background-color: azure;
+        }
+        fieldset.send {
+            background-color:coral;
+        }
+        fieldset.input label>span {
+            display: inline-block;
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <form action="dump.php" method="POST">
+        <fieldset class="input">
+            <legend>Dados Biográficos</legend>
+            <label for="iusername"><span>username :</span></label>
+            <input type="text" name="username" id="iusername" placeholder="Username"> <br>
+            <label for="ipassword"><span>pass :<span></pan></label>
+            <input type="password" name="password" id="ipassword" required="required">
+            <br>
+            <label for="iidade"><span>idade :<span></pan></label>
+            <input type="number" name="idade" id="iidade">
+            <input type="hidden" name="id" value="28762386823489"/>
+            <input type="datetime-local" name="datanascimento">
+
+        </fieldset>
+        <fieldset class="input">
+            <legend>Género</legend>
+            <label><span>masculino :</span>
+            <input required="required" type="radio" name="genero" value="m">
+            </label>
+            <br>
+            <label><span>feminino :</span>
+            <input type="radio" name="genero" value="f">
+            </label>
+            <br>
+            <label><span>outro :</span>
+            <input type="radio" name="genero" value="x"> 
+            </label>          
+        </fieldset>
+        <fieldset class="input">
+                <legend>Hobbies</legend>
+                <label><span>cinema</span>
+                <input type="checkbox" name="hobby[]" value="1">
+                </label>
+                <br>
+                <label><span>dormir</span>
+                <input type="checkbox" name="hobby[]" value="2">
+                </label>
+                <br>
+                <label><span>séries</span>
+                <input type="checkbox" name="hobby[]" value="3"> 
+                </label>
+                <br>
+                <label><span>desporto</span>
+                <input type="checkbox" name="hobby[]" value="4"> 
+                </label>                
+        </fieldset>
+        <fieldset class="send">
+                <legend>Comentário</legend>
+                <textarea cols="10" rows="3" name="comment" placeholder="Insira o seu Comentário"></textarea>
+        </fieldset>
+        <fieldset class="send">
+               <select name="nacionalidade">
+                   <optgroup label="Europa">
+                   <option value="pt">Portugal</option>
+                   <option value="es">Espanha</option>
+                   <option disabled = "disabled" fr">França</option>
+                    </optgroup>
+                   <optgroup label="Resto do Mundo">
+                   <option value="tv">Tuvalu</option>
+                   <option selected="selected" value="cn">China</option>
+                  </optgroup>
+               </select>
+        </fieldset>
+        <fieldset class="send">
+            <legend>Submissão</legend>
+            <input type="submit" value="Enviar">
+            <input type="reset" value="Limpar">
+        </fieldset>
+    </form>
+</body>
+</html>
