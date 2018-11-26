@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="dump.php" method="GET" id="f1">
+        CP : <input type="text" name="cp" pattern="\d{4}-[0-9]{3}" title="CP no formato DDDD-DDD"><br/>
+        username : <input id="u" type="text" name="username" pattern="[a-zA-Z]{4,6}" title="4 a 6 letras"><br/>
+        pass : <input type="text" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&?*+-]).{4,6}">
+        
+        <fieldset class="input">
+            <legend>Hobbies</legend>
+            <label><span>cinema</span>
+            <input type="checkbox" name="hobby[]" value="1">
+            </label>
+            <br>
+            <label><span>dormir</span>
+            <input type="checkbox" name="hobby[]" value="2">
+            </label>
+            <br>
+            <label><span>séries</span>
+            <input type="checkbox" name="hobby[]" value="3"> 
+            </label>
+            <br>
+            <label><span>desporto</span>
+            <input type="checkbox" name="hobby[]" value="4"> 
+            </label>                
+    </fieldset>
+
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+
+        usernameInput = document.getElementById("u");
+        usernameInput.addEventListener("keyup",checkuser) 
+        
+        
+        function checkuser () {
+            console.log(usernameInput.value);
+
+            url = "checkuser.php?username="+usernameInput.value;
+            fetch(url)
+                .then( function (response) {
+                    return response.json();
+                })
+                .then ( function (data) {
+                    if (data.status) {
+                        usernameInput.style.backgroundColor="lime";
+                    } else {
+                        usernameInput.style.backgroundColor="lime";
+                    }
+                });
+            
+        }
+        
+        
+        
+        
+
+
+
+        myForm = document.getElementById("f1");
+        myForm.addEventListener("submit",validar2);
+
+        function validar(e) {
+            var c = 0;
+            check = myForm.elements.namedItem("hobby[]");
+            console.log(check);
+            
+            for(let i=0; i < check.length ; i++) {
+                if (check[i].checked) c++;
+            }
+
+            if (c == 2) {
+                return true;
+            } else {
+                e.preventDefault();
+                return false;
+            }
+        }
+
+        function validar2(e) {
+
+            console.log(e.currentTarget);
+
+            hobbiesChecked = document.querySelectorAll("form#f1 input[name='hobby[]']:checked");
+            console.log(hobbiesChecked);
+
+            if (hobbiesChecked.length === 2) {
+                return true;
+            } else {
+                e.preventDefault();
+                return false;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
