@@ -13,6 +13,5 @@ $nameDB = "barecgm";
 if ($connDB->connect_errno) {
     die ("error : ". $connDB->connect_error);
 }
-
-echo "Connected";
+//echo "Connected";
 ?>

@@ -22,14 +22,4 @@ if ($connDB->errno) {
         echo "<li>".$product->designacao." : ".$product->qtd."</li>";
     }
 }
-
-
-
-
-
-
-
-
-
-
 ?>
