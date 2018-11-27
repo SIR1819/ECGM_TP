@@ -14,4 +14,7 @@ if ($connDB->connect_errno) {
     die ("error : ". $connDB->connect_error);
 }
 //echo "Connected";
+
+$connDB->set_charset("utf8");
+
 ?>

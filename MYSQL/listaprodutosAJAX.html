@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="controlo">
+        <button id="bget">Get Products</button>
+        <button id="bclear">Clear Products</button>
+    </div>
+    <div id="content">
+
+    </div>
+</body>
+<script>
+    var bget = document.getElementById("bget");
+    var bclear = document.getElementById("bclear");
+
+    bclear.addEventListener("click", function () {
+        document.getElementById("content").innerHTML = "";
+    });
+
+    bget.addEventListener("click", function () {
+        fetch('getproducts.php')
+            .then(function (resposta) {
+                return resposta.json();
+            })
+            .then(function (produtos) {
+                postProducts(produtos);
+            })
+    });
+
+    function postProducts(produtos) {
+        console.log(produtos);
+        content = document.getElementById("content");
+        produtos.forEach(element => {
+            newProduct = document.createElement("p");
+            newProduct.innerHTML = element.designacao + " : " + element.preco;
+            content.appendChild(newProduct); 
+        });
+
+    }
+</script>
+</html>
