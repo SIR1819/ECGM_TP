@@ -33,8 +33,7 @@
                 var parser = new DOMParser();
                 productsDOM = parser.parseFromString(produtosXMLText,'text/xml');
                 console.log(productsDOM);
-                postProductsXML(productsDOM);
-                
+                postProductsXML(productsDOM);       
             })
     });
 
@@ -54,7 +53,6 @@
             newProduct.innerHTML = designacao + " : " + preco;
             content.appendChild(newProduct); 
         };
-;
         //console.log(produtos);
 
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <script>
+     /*
+     XMLText =  "<pais id='112'> \
+<nome>Portugal</nome> \
+<distrito id='16'> \
+<nome> Viana do Castelo </nome> \
+<concelho id='16_1'> \
+    <nome> Viana do Castelo </nome> \
+    <freguesia id='16_1_1'> \
+        <nome> Afife </nome> \
+    </freguesia> \
+    <freguesia id='16_1_2'> \
+        <nome> Alvarães </nome> \
+    </freguesia> \
+</concelho> \
+<concelho id='16_3'> \
+    <nome> Ponte de Lima </nome> \
+        <freguesia id='16_3_1'> \
+        <nome>Arcozelo</nome> \
+        </freguesia> \
+        <freguesia id='16_3_2'> \
+        <nome>Anais</nome> \
+    </freguesia> \
+</concelho> \
+</distrito> \
+<distrito id='3'> \
+<nome> Braga </nome> \
+</distrito> \
+</pais>";
+*/
+
+var XMLdata;
+$.ajax({
+    url: "admin.xml",
+    method : "GET",
+    dataType : "xml",
+    success : function (data) {
+        //XMLdata = $.parseXML(data);
+        console.log(data);
+    },
+    error : function (error) {
+        console.log("--",error);
+    }
+});
+
+fetch('admin.xml')
+ .then(function (resposta) {
+     return resposta.text();
+ })
+ .then (function (dataText) {
+     parser = new DOMParser();
+     result = parser.parseFromString(dataText,"application/xml");
+     console.log(result);
+ });
+
+
+
+
+//XMLdata = $.parseXML(XMLText);
+//console.log (XMLdata);
+/*
+result = $(XMLdata).find("nome");
+console.log(result);
+
+result = $(XMLdata).children("pais").children("nome").text();;
+console.log(result);
+
+result = $(XMLdata).find("freguesia").children("nome").text();
+console.log(result);
+
+result = $(XMLdata).find("distrito>nome").first().text("Porto");
+console.log(XMLdata);
+
+$(XMLdata).find("freguesia>nome").each(function (i,d) {
+    $("body").append($("<p/>").text($(d).text())); });
+
+console.log(XMLdata);
+*/
+
+    </script>
+</body>
+</html>

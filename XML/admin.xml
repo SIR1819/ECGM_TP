@@ -1,0 +1,27 @@
+<pais id='112'>  
+<nome>Portugal</nome>  
+<distrito id='16'>  
+<nome> Viana do Castelo </nome>  
+<concelho id='16_1'>  
+    <nome> Viana do Castelo </nome>  
+    <freguesia id='16_1_1'>  
+        <nome> Afife </nome>  
+    </freguesia>  
+    <freguesia id='16_1_2'>  
+        <nome> Alvarães </nome>  
+    </freguesia>  
+</concelho>  
+<concelho id='16_3'>  
+    <nome> Ponte de Lima </nome>  
+        <freguesia id='16_3_1'>  
+        <nome>Arcozelo</nome>  
+        </freguesia>  
+        <freguesia id='16_3_2'>  
+        <nome>Anais</nome>  
+    </freguesia>  
+</concelho>  
+</distrito>  
+<distrito id='3'>  
+<nome> Braga </nome>  
+</distrito>  
+</pais>
