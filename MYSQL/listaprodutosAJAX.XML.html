@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="controlo">
+        <button id="bget">Get Products XML</button>
+        <button id="bclear">Clear Products</button>
+    </div>
+    <div id="content">
+
+    </div>
+</body>
+<script>
+    var bget = document.getElementById("bget");
+    var bclear = document.getElementById("bclear");
+
+    bclear.addEventListener("click", function () {
+        document.getElementById("content").innerHTML = "";
+    });
+
+    bget.addEventListener("click", function () {
+        fetch('getproductsXML.php')
+            .then(function (resposta) {
+                return resposta.text();
+            })
+            .then(function (produtosXMLText) {
+                console.log(produtosXMLText);
+                var parser = new DOMParser();
+                productsDOM = parser.parseFromString(produtosXMLText,'text/xml');
+                console.log(productsDOM);
+                postProductsXML(productsDOM);
+                
+            })
+    });
+
+    function postProductsXML(produtosDOM) {
+        
+        content = document.getElementById("content");
+        
+        var produtos = produtosDOM.getElementsByTagName("produto");
+        
+        content = document.getElementById("content");
+
+        for (let i=0; i< produtos.length ; i++) {
+            //console.log(produtos[i].getElementsByTagName('designacao'));
+            designacao = produtos[i].getElementsByTagName('designacao')[0].innerHTML;
+            preco = produtos[i].getElementsByTagName('preco')[0].innerHTML;
+            newProduct = document.createElement("p");
+            newProduct.innerHTML = designacao + " : " + preco;
+            content.appendChild(newProduct); 
+        };
+;
+        //console.log(produtos);
+
+
+    }
+</script>
+</html>
